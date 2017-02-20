@@ -1,0 +1,4 @@
+En el menu de ventas, cuando introduzco una venta, el numero de cliente que pido es 
+el del comprador o el del vendedor? 
+Luego en el mismo lado en servicio.introducirVenta, le introduzco el nombre del vendedor pero
+no hago nada con él.
