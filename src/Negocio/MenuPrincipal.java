@@ -221,7 +221,7 @@ public class MenuPrincipal {
         Televisor.tipoTelevisores m = null;
         int opcion;
         Scanner sc = new Scanner(System.in);
-        Televisor.tipoTelevisores[] televisores = null;
+        Televisor.tipoTelevisores[] televisores = new Televisor.tipoTelevisores[Televisor.tipoTelevisores.values().length+1];
         
         do {
             System.out.println("Introduzca el tipo de Televisor: Escribe(1,2,3,4)");
@@ -232,7 +232,7 @@ public class MenuPrincipal {
                 System.out.println(contador+" "+televisor);
                 televisores[contador] = televisor;
             }
-
+            System.out.print("Opcion: ");
             opcion = Integer.parseInt(sc.nextLine());
 
         } while (opcion < 0 || opcion > Televisor.tipoTelevisores.values().length);
