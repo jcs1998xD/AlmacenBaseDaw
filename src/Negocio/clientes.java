@@ -9,9 +9,15 @@ import java.util.List;
 
 public class clientes {
 
-    private List<Cliente> clientes = new ArrayList<>();
+    private List<Cliente> clientes;
+    private ventas ventas;
 
     clientes() {
+        clientes = new ArrayList<>();
+    }
+    
+    public void setclientesVentas(ventas lista){
+        this.ventas = lista;
     }
 
     public void introducirCliente(Cliente c) {

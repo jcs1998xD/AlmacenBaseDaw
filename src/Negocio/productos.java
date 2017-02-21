@@ -11,10 +11,16 @@ import java.util.List;
 public class productos {
 
     private List<Producto> productos;
+    private ventas ventas;
 
     productos() {
+        productos = new ArrayList<>();
     }
-
+    
+    public void setproductosVentas(ventas lista){
+        ventas = lista;
+    }
+    
     public void introducirProducto(Producto p) {
         try {
             productos.add(p);
