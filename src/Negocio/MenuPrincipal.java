@@ -219,32 +219,26 @@ public class MenuPrincipal {
 
     private Televisor.tipoTelevisores pedirTipoTelevisor() {
         Televisor.tipoTelevisores m = null;
-        String opcion;
+        int opcion;
         Scanner sc = new Scanner(System.in);
-
+        Televisor.tipoTelevisores[] televisores = null;
+        
         do {
             System.out.println("Introduzca el tipo de Televisor: Escribe(1,2,3,4)");
-            System.out.println("1.PLASMA");
-            System.out.println("2.LED");
-            System.out.println("3.LCD");
-            System.out.println("4.OLED");
+            int contador = 0;
+            
+            for (Televisor.tipoTelevisores televisor : Televisor.tipoTelevisores.values()) {
+                contador++;
+                System.out.println(contador+" "+televisor);
+                televisores[contador] = televisor;
+            }
 
-            opcion = sc.nextLine();
+            opcion = Integer.parseInt(sc.nextLine());
 
-        } while (!opcion.equals("1") && !opcion.equals("2") && !opcion.equals("3") && !opcion.equals("4"));
+        } while (opcion < 0 || opcion > Televisor.tipoTelevisores.values().length);
 
-        if (opcion.equals("1")) {
-            m = Televisor.tipoTelevisores.PLASMA;
-        }
-        if (opcion.equals("2")) {
-            m = Televisor.tipoTelevisores.LED;
-        }
-        if (opcion.equals("3")) {
-            m = Televisor.tipoTelevisores.LCD;
-        }
-        if (opcion.equals("3")) {
-            m = Televisor.tipoTelevisores.OLED;
-        }
+            m = televisores[opcion];
+        
 
         return m;
     }
