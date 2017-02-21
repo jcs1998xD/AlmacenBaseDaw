@@ -21,10 +21,14 @@ import java.util.Scanner;
 
 public class MenuPrincipal {
 
-    NegociosService servicio;
+    clientes clientes;
+    productos productos;
+    ventas ventas;
 
     MenuPrincipal() {
-        servicio = new NegociosService();
+    clientes= new clientes();
+    productos = new productos();
+    ventas = new ventas();
     }
 
     private void introducirDatos() {
@@ -32,7 +36,7 @@ public class MenuPrincipal {
         // Introducir Cliente
         Cliente c = new Particular();
         c.setNombre("Alfredo");
-        servicio.introducirCliente(c);
+        clientes.introducirCliente(c);
         // Introducir mueble
         Mueble mueble = new Mueble();
         mueble.setPrecio(100);
@@ -42,7 +46,7 @@ public class MenuPrincipal {
         mueble.setAnyoFab(fecha1);
         mueble.setTipoMadera(Mueble.Madera.HAYA);
         mueble.setEstilo("estilos");
-        servicio.introducirProducto(mueble);
+        productos.introducirProducto(mueble);
     }
 
     public void inciarAplicacion() {
@@ -97,23 +101,23 @@ public class MenuPrincipal {
                 System.out.println();
                 if (opcionProductos == 1) {
                     Producto p = datosProducto();
-                    servicio.introducirProducto(p);
+                    productos.introducirProducto(p);
                     System.out.println("Producto añadido");
                     System.out.println("La id del producto es " + p.getId());
                 }
                 if (opcionProductos == 2) {
                     System.out.print("Introduzca el número de producto: ");
                     int num = sc.nextInt();
-                    servicio.elimninarProducto(num);
+                    productos.elimninarProducto(num);
                     System.out.println("Producto eliminado");
                 }
                 if (opcionProductos == 3) {
                     System.out.print("Introduzca el número de producto: ");
                     int nprod = sc.nextInt();
-                    System.out.println(servicio.buscarProducto(nprod).imprimirProducto());
+                    System.out.println(productos.buscarProducto(nprod).imprimirProducto());
                 }
                 if (opcionProductos == 4) {
-                    System.out.println(servicio.imprimirTodosProductos());
+                    System.out.println(productos.imprimirTodosProductos());
                 }
 
             } while (opcionProductos != 0);
@@ -307,7 +311,7 @@ public class MenuPrincipal {
         Particular c = new Particular();
         c.setNombre(nombre);
         c.setDni(dni);
-        servicio.introducirCliente(c);
+        clientes.introducirCliente(c);
         System.out.println("Su número de cliente es: " + c.getIdCliente());
     }
 
@@ -372,7 +376,7 @@ public class MenuPrincipal {
         c.setCif(cif);
         c.setDescuento(descuento);
         c.setTipoMayorista(tipoMayorista);
-        servicio.introducirCliente(c);
+        clientes.introducirCliente(c);
         System.out.println("Su número de cliente es: " + c.getIdCliente());
     }
 
@@ -382,7 +386,7 @@ public class MenuPrincipal {
         String numeroo = sc.nextLine();
         int numero = Integer.parseInt(numeroo);
         try {
-            servicio.eliminarCliente(numero);
+            clientes.eliminarCliente(numero);
             System.out.println("Cliente eliminado con éxito");
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
@@ -395,7 +399,7 @@ public class MenuPrincipal {
         String nume = sc.nextLine();
         int num = Integer.parseInt(nume);
         try {
-            System.out.println(servicio.buscarCliente(num).imprimir());
+            System.out.println(clientes.buscarCliente(num).imprimir());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -426,7 +430,7 @@ public class MenuPrincipal {
                     imprimirCliente();
                 }
                 if (opcionClientes == 4) {
-                    System.out.println(servicio.imprimirTodosClientes());
+                    System.out.println(clientes.imprimirTodosClientes());
                 }
 
             } while (opcionClientes != 0);
@@ -457,16 +461,16 @@ public class MenuPrincipal {
                 if (opcionVentas.equals("2")) {
                     System.out.print("Introduzca número de venta: ");
                     int nv = Integer.parseInt(sc.nextLine());
-                    servicio.eliminarVenta(nv);
+                    ventas.eliminarVenta(nv);
                     System.out.println("Venta eliminada");
                 }
                 if (opcionVentas.equals("3")) {
                     System.out.print("Introduzca número de venta: ");
                     int nv = Integer.parseInt(sc.nextLine());
-                    System.out.println(servicio.buscarVenta(nv).imprimirVenta());
+                    System.out.println(ventas.buscarVenta(nv).imprimirVenta());
                 }
                 if (opcionVentas.equals("4")) {
-                    System.out.println(servicio.imprimirtodasVentas());
+                    System.out.println(ventas.imprimirtodasVentas());
                 }
 
             } while (!opcionVentas.equals("0"));
@@ -488,7 +492,7 @@ public class MenuPrincipal {
         String v = sc.nextLine();
         int añadido = 0;
         try {
-        añadido = servicio.introducirVenta(nv, np, v);
+        añadido = ventas.introducirVenta(nv, np, v);
         System.out.println("Venta añadida");
         System.out.println("Id de venta " + añadido);
         } catch (Exception e){
