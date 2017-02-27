@@ -11,18 +11,19 @@ public class ventas {
     private List<Venta> ventas;
     private clientes clientes;
     private productos productos;
-    
+
     ventas() {
         this.ventas = new ArrayList<>();
     }
 
-    public void setventasClientes(clientes lista){
+    public void setventasClientes(clientes lista) {
         this.clientes = lista;
     }
-    public void setventasProductos(productos lista){
+
+    public void setventasProductos(productos lista) {
         this.productos = lista;
     }
-    
+
     public int introducirVenta(int ncliente, int nproducto, String vend) throws Exception {
         Venta v = new Venta();
         Cliente clienteVenta;
@@ -95,6 +96,28 @@ public class ventas {
             throw new RuntimeException("imposible eliminar la venta");
         }
 
+    }
+
+    public void eliminarVentasCliente(int numCliente) {
+        List<Venta> ventasEliminar = new ArrayList();
+        for (Venta v : ventas) {
+            if (v.getCliente().getIdCliente() == numCliente) {
+                ventasEliminar.add(v);
+
+            }
+        }
+        ventas.removeAll(ventasEliminar);
+    }
+
+    public void eliminarVentasProducto(int nproducto) {
+        List<Venta> ventasEliminar = new ArrayList();
+        for (Venta v : ventas) {
+            if (v.getProducto().getId() == nproducto) {
+                ventasEliminar.add(v);
+
+            }
+        }
+        ventas.removeAll(ventasEliminar);
     }
 
     public String imprimirtodasVentas() {

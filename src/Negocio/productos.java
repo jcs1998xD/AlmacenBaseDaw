@@ -16,11 +16,11 @@ public class productos {
     productos() {
         productos = new ArrayList<>();
     }
-    
-    public void setproductosVentas(ventas lista){
+
+    public void setproductosVentas(ventas lista) {
         ventas = lista;
     }
-    
+
     public void introducirProducto(Producto p) {
         try {
             productos.add(p);
@@ -44,18 +44,14 @@ public class productos {
         return producto;
     }
 
+ 
+
     public void elimninarProducto(int nproducto) throws RuntimeException {
         try {
             Producto productoEliminar = null;
             //Eliminamos de ventas el producto seleccionado
-            List<Venta> ventasEliminar = new ArrayList();
-            for (Venta v : ventas) {
-                if (v.getProducto().getId() == nproducto) {
-                    ventasEliminar.add(v);
 
-                }
-            }
-            ventas.removeAll(ventasEliminar);
+            ventas.eliminarVentasProducto(nproducto);
 
             //Eliminamos el producto
             for (Producto p : productos) {
