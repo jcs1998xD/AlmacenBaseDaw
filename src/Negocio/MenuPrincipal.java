@@ -27,8 +27,13 @@ public class MenuPrincipal {
 
     MenuPrincipal() {
     clientes= new clientes();
+    clientes.setclientesVentas(ventas);
     productos = new productos();
+    productos.setproductosVentas(ventas);
     ventas = new ventas();
+    ventas.setventasClientes(clientes);
+    ventas.setventasProductos(productos);
+    
     }
 
     private void introducirDatos() {

@@ -49,14 +49,8 @@ public class clientes {
             // Al eliminar un cliente también eliminamos las ventas asociadas a el
 
             //Eliminamos las ventas del cliente seleccionado
-            List<Venta> ventasEliminar = new ArrayList();
-            for (Venta v : ventas) {
-                if (v.getCliente().getIdCliente() == numCliente) {
-                    ventasEliminar.add(v);
-
-                }
-            }
-            ventas.removeAll(ventasEliminar);
+            
+            ventas.eliminarVentasCliente(numCliente);
 
             //Eliminamos el cliente
             Cliente clienteBorrar = null;
